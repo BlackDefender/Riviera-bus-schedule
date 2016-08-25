@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# Updated: 25.08.2016 19:08
+
+CACHE:
+js/app.js
+# js/data.js
+css/style.css
+css/fonts.css
+img/how_to_get_pic.jpg
+fonts/OpenSans-Light.woff2
+fonts/OpenSans-Light-cyr.woff2
+fonts/OpenSans-Regular.woff2
+fonts/OpenSans-Regular-cyr.woff2
+fonts/OpenSans-Semibold.woff2
+fonts/OpenSans-Semibold-cyr.woff2

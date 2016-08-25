@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru" manifest="default.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Riviera Bus Schedule</title>
+    <link type="text/css" rel="stylesheet" href="css/fonts.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <!--<script type="text/javascript" src="js/data.js"></script>-->
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!--  FAVICONS  -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="./img/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="./img/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="./img/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./img/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="./img/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="./img/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="./img/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./img/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="./img/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="./img/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./img/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="./img/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="./img/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="./img/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="./img/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="./img/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="./img/mstile-310x310.png" />
+</head>
+<body>
+    <main>
+        <h2 id="title">Ближайшие автобусы</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>В ривьеру</th>
+                    <th>Из ривьеры</th>
+                </tr>
+            </thead>
+        </table>
+        <div id="entry-point-wrap">
+            <div id="entry-point"></div>
+        </div>
+        <img src="./img/how_to_get_pic.jpg" id="map">
+        <div id="description">
+            <p>Маршрут №1 пр-т Добровольского/ул. Паустовского</p>
+            <p>Маршрут №2 ул. Ж. Кюри/Бочарова</p>
+            <p>Маршрут №4 Ж. Кюри/Заболотного (Курская)</p>
+            <p>Маршрут №5 ул. Кишиневская (пр-т. Добровольского)</p>
+            <p>Маршрут №6 ТЦ "Семья"</p>
+            <p>Маршрут №7 ул. Паустовского(Днепр.дор.)</p>
+        </div>
+        <button class="settings-btn" id="open-settings">Настройки</button>
+    </main>
+    <aside id="settings">
+        <h2>Настройки</h2>
+        <label id="settings--records-count">Количество записей&nbsp;&nbsp;<input type="number" max="15" min="2" value="8" size="2" /> (2-15)</label>
+        <button class="settings-btn" id="close-settings">Сохранить и закрыть</button>
+    </aside>
+</body>
+</html>

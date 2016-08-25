@@ -1,0 +1,87 @@
+body{
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 14px;
+}
+main{
+    margin: auto;
+    max-width: 500px;
+}
+#title{
+    text-align: center;
+    margin: 0;
+}
+#entry-point-wrap{
+    border: 1px solid #cccccc;
+    padding: 5px 3px;
+    margin: 3px 0px 10px;
+}
+#entry-point {
+    height: 200px;
+    overflow: auto;
+}
+table{
+    width: 100%;
+    text-align: center;
+    border-spacing: 0;
+}
+table th{
+    width:50%;
+    height: 28px;
+    line-height: 28px;
+}
+#entry-point table td{
+    height: 25px;
+    line-height: 25px;
+    padding: 0;
+}
+#map{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+#description{
+    border-top: 1px solid #cccccc;
+    margin: 15px 5px;
+}
+#description p{
+    margin: 10px 0;
+}
+
+/* SETTINGS */
+.settings-btn{
+    width: 300px;
+    border-radius: 10px;
+    height: 34px;
+    border: 1px solid #818181;
+    display: block;
+    margin: auto;
+}
+
+#settings{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: none;
+    text-align: center;
+}
+#settings.active{
+    display: block;
+}
+
+#settings h2{
+    text-align: center;
+}
+
+#settings--records-count input{
+    width: 35px;
+}
+
+#close-settings{
+    margin-top: 20px;
+}
+
+
