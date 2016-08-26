@@ -34,6 +34,7 @@ table th{
     height: 25px;
     line-height: 25px;
     padding: 0;
+    width: 50%;
 }
 #map{
     display: block;
@@ -79,7 +80,17 @@ table th{
 #settings--records-count input{
     width: 35px;
 }
-
+#settings--routes-list-header{
+    margin: 20px 0 0;
+}
+#settings--routes-list{
+    display: inline-block;
+    text-align: left;
+}
+#settings--routes-list label{
+    display: block;
+    margin: 12px 15px;
+}
 #close-settings{
     margin-top: 20px;
 }

@@ -8,7 +8,6 @@
     <title>Riviera Bus Schedule</title>
     <link type="text/css" rel="stylesheet" href="css/fonts.css">
     <link type="text/css" rel="stylesheet" href="css/style.css">
-    <!--<script type="text/javascript" src="js/data.js"></script>-->
     <script type="text/javascript" src="js/app.js"></script>
 
     <!--  FAVICONS  -->
@@ -48,19 +47,16 @@
             <div id="entry-point"></div>
         </div>
         <img src="./img/how_to_get_pic.jpg" id="map">
-        <div id="description">
-            <p>Маршрут №1 пр-т Добровольского/ул. Паустовского</p>
-            <p>Маршрут №2 ул. Ж. Кюри/Бочарова</p>
-            <p>Маршрут №4 Ж. Кюри/Заболотного (Курская)</p>
-            <p>Маршрут №5 ул. Кишиневская (пр-т. Добровольского)</p>
-            <p>Маршрут №6 ТЦ "Семья"</p>
-            <p>Маршрут №7 ул. Паустовского(Днепр.дор.)</p>
-        </div>
+        <div id="description"></div>
         <button class="settings-btn" id="open-settings">Настройки</button>
     </main>
     <aside id="settings">
         <h2>Настройки</h2>
         <label id="settings--records-count">Количество записей&nbsp;&nbsp;<input type="number" max="15" min="2" value="8" size="2" /> (2-15)</label>
+
+        <h3 id="settings--routes-list-header">Показывать маршруты</h3>
+        <div id="settings--routes-list"></div>
+
         <button class="settings-btn" id="close-settings">Сохранить и закрыть</button>
     </aside>
 </body>
