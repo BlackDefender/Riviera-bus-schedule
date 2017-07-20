@@ -38,7 +38,6 @@ var dataObj = [
 ];
 
 function renderSchedule() {
-    document.getElementById('entry-point').innerHTML = '';
     var settings = getSettings();
     var now = new Date();
     var year = now.getFullYear(),
@@ -76,35 +75,32 @@ function renderSchedule() {
         else return false;
     });
 
-    var table = document.createElement('table');
-    var tableContent = '<tbody>';
-    var _minutes;
+
+    var tableContent = '';
     for(var i = 0; i < Math.max(toRiviera.length, fromRiviera.length); ++i){
-        tableContent += '<tr>';
+        tableContent += '<div class="row">';
         if(toRiviera[i]){
-            _minutes = toRiviera[i].time.getMinutes().toString();
-            if(_minutes.length === 1) _minutes = '0'+_minutes;
-            tableContent += '<td>'+toRiviera[i].busNumber+' - '+toRiviera[i].time.getHours()+':'+_minutes+'</td>';
+            tableContent += '<div class="cell">'+toRiviera[i].busNumber+' - '+toRiviera[i].time.getHours()+':'+addPrevZero(toRiviera[i].time.getMinutes())+'</div>';
         }else{
-            tableContent += '<td> </td>';
+            tableContent += '<div class="cell"> </div>';
         }
         if(fromRiviera[i]){
-            _minutes = fromRiviera[i].time.getMinutes().toString();
-            if(_minutes.length === 1) _minutes = '0'+_minutes;
-            tableContent += '<td>'+fromRiviera[i].busNumber+' - '+fromRiviera[i].time.getHours()+':'+_minutes+'</td>';
+            tableContent += '<div class="cell">'+fromRiviera[i].busNumber+' - '+fromRiviera[i].time.getHours()+':'+addPrevZero(fromRiviera[i].time.getMinutes())+'</div>';
         }else{
-            tableContent += '<td> </td>';
+            tableContent += '<div class="cell"> </div>';
         }
+        tableContent += '</div>';
     }
-    tableContent += '</tbody>';
-    table.innerHTML = tableContent;
-    document.getElementById('entry-point').appendChild(table);
+    document.querySelector('#schedule .body').innerHTML = tableContent;
+}
+
+function addPrevZero(val) {
+    return (val.toString().length === 1) ? '0' + val : val;
 }
 
 function renderRecordsCount() {
     var oneRecordHeight = 25;
-    if(document.querySelector('#entry-point table td')) oneRecordHeight = document.querySelector('#entry-point table td').clientHeight;
-    document.getElementById('entry-point').style.height = oneRecordHeight * getSettings().recordsCount + 'px';
+    document.querySelector('#schedule .body').style.height = oneRecordHeight * getSettings().recordsCount + 'px';
 }
 
 function renderDescription() {
