@@ -1,10 +1,9 @@
 CACHE MANIFEST
-# Last updated: 26.08.2016 15:39
+# Last updated: 20.07.2017 17:00
 
 CACHE:
 js/app.js
 css/style.css
-css/fonts.css
 img/how_to_get_pic.jpg
 fonts/OpenSans-Light.woff2
 fonts/OpenSans-Light-cyr.woff2
