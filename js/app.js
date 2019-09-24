@@ -58,15 +58,18 @@
         }
     ];
 
-    const prevZero = val => (val.toString().length === 1) ? '0' + val : val;
+    const prevZero = val => (val.toString().length === 1) ? `0${val}` : val;
 
     let schedule, settings;
     const getSchedule = () => {
-        const now = new Date();
-        const year = now.getFullYear(),
-            month = now.getMonth(),
-            day = now.getDate(),
-            weekDay = now.getDay();
+        const millisecondsOffset = 5 * 60 * 1000;
+        const offsetTimestamp = Date.now() - millisecondsOffset;
+        const currentTime = new Date();
+        currentTime.setTime(offsetTimestamp);
+        const year = currentTime.getFullYear(),
+            month = currentTime.getMonth(),
+            day = currentTime.getDate(),
+            weekDay = currentTime.getDay();
 
         const directionSchedule = direction => data.filter(route => route.days.includes(weekDay))
             .flatMap(route => route[direction].map(time => time.split(':')).map(time => ({busNumber: route.busNumber, time: new Date(year, month, day, time[0], time[1])})))
@@ -111,18 +114,26 @@
             showBuses: ['1', '2', '3', '4', '5', '6', '7', '8']
         });
 
-
-    const loadSettings = () => {
+    const loadSettingsFromLocalStorage = (storageKey, defaultSettings) => {
+        const settings = defaultSettings;
         if(localStorage){
-            if(localStorage.getItem('rivieraBusSchedule')){
-                settings = JSON.parse(localStorage.getItem('rivieraBusSchedule'));
-            }else{
-                settings = getDefaultSettings();
-                localStorage.setItem('rivieraBusSchedule', JSON.stringify(settings));
+            const loadedSettingsStr = localStorage.getItem(storageKey);
+            if(loadedSettingsStr){
+                try{
+                    const loadedSettings = JSON.parse(loadedSettingsStr);
+                    for(let param in settings) {
+                        if (settings.hasOwnProperty(param) && loadedSettings.hasOwnProperty(param)) {
+                            settings[param] = loadedSettings[param];
+                        }
+                    }
+                }catch (e) {
+                    console.error("Settings can't be loaded. Use default settings.");
+                    console.error(e);
+                    return defaultSettings;
+                }
             }
-        }else{
-            settings = getDefaultSettings();
         }
+        return settings;
     };
 
     const saveAndApplySettings = () => {
@@ -158,7 +169,7 @@
     };
 
     const init = () => {
-        loadSettings();
+        settings = loadSettingsFromLocalStorage('rivieraBusSchedule', getDefaultSettings());
         schedule = getSchedule();
         setScheduleElementHeight();
         renderSchedule();
@@ -170,7 +181,7 @@
             // при отсутствии localStorage убираем кнопку с настройками. все равно хранить их будет негде.
             document.getElementById('open-settings').style.display = 'none';
         }
-        setInterval(renderSchedule, 120000);
+        setInterval(renderSchedule, 60000);
     };
     document.addEventListener("DOMContentLoaded", init);
 })();

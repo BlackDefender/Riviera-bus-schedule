@@ -1,0 +1,21 @@
+{
+  "short_name": "Riviera Bus Schedule",
+  "name": "Riviera Bus Schedule",
+  "icons": [
+    {
+      "src": "/img/favicon-196x196.png",
+      "type": "image/png",
+      "sizes": "196x196"
+    },
+    {
+      "src": "/img/favicon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#ffffff"
+}
