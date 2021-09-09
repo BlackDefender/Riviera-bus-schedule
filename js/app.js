@@ -84,7 +84,11 @@
     const renderSchedule = () => {
         const now = new Date();
 
-        const prepareScheduleItems = direction => direction.filter( item => item.time >= now && settings.showBuses.includes(item.busNumber) )
+        const prepareScheduleItems = direction => direction
+            .filter( (item) => {
+                if(settings.showAllTime) return settings.showBuses.includes(item.busNumber);
+                return item.time >= now && settings.showBuses.includes(item.busNumber);
+            })
             .map( item => `<div class="cell">${item.busNumber} - ${item.time.getHours()}:${prevZero(item.time.getMinutes())}</div>`);
 
         const toRiviera = prepareScheduleItems(schedule.to);
@@ -110,9 +114,10 @@
     };
 
     const getDefaultSettings = () => ({
-            recordsCount: 8,
-            showBuses: ['1', '2', '3', '4', '5', '6', '7', '8']
-        });
+        recordsCount: 8,
+        showBuses: ['1', '2', '3', '4', '5', '6', '7', '8'],
+        showAllTime: false
+    });
 
     const loadSettingsFromLocalStorage = (storageKey, defaultSettings) => {
         const settings = defaultSettings;
@@ -141,6 +146,9 @@
         const recordsCount = parseInt(document.querySelector('#settings--records-count input').value);
         if(recordsCount >= 2 && recordsCount <= 15) settings.recordsCount = recordsCount;
 
+        // показывать ли все расписание на сегодня
+        settings.showAllTime = document.querySelector('#settings--show-all-time input').checked;
+
         // задаем отображаемые маршруты
         const routesDOMItemsList = document.querySelectorAll('#settings--routes-list input[type="checkbox"]:checked');
         settings.showBuses = Array.prototype.map.call(routesDOMItemsList, item => item.value);
@@ -156,6 +164,7 @@
 
     const showSettingsPage = () => {
         document.querySelector('#settings--records-count input').value = settings.recordsCount;
+        document.querySelector('#settings--show-all-time input').checked = settings.showAllTime || false;
         document.getElementById('settings--routes-list').innerHTML = data.reduce( (html, item) =>
                 `${html}<label><input ${settings.showBuses.includes(item.busNumber) ? 'checked' : ''} type="checkbox" value="${item.busNumber}">${item.description}</label>`
         , '');
